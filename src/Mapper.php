@@ -38,6 +38,7 @@ final class Mapper implements MapperInterface
         }
 
         $mapper = $this->configuration->getMapping($source::class, $destinationClassName);
+
         return $mapper->mapObject($source, $contextData);
     }
 }

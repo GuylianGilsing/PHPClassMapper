@@ -5,6 +5,8 @@ require_once __DIR__.'/../vendor/autoload.php';
 // Include test fixtures
 require_once __DIR__.'/fixtures/Mapping/AToBMapping.php';
 require_once __DIR__.'/fixtures/Mapping/ExtraContentMapping.php';
+require_once __DIR__.'/fixtures/Mapping/ToArrayMapping.php';
+require_once __DIR__.'/fixtures/Mapping/FromArrayMapping.php';
 
 require_once __DIR__.'/fixtures/Battery.php';
 require_once __DIR__.'/fixtures/Device.php';

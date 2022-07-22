@@ -13,7 +13,8 @@
         "psr-4": {
             "PHPClassMapper\\": "./src",
             "PHPClassMapper\\Configuration\\": "./src/Configuration",
-            "PHPClassMapper\\Exceptions\\": "./src/Exceptions"
+            "PHPClassMapper\\Exceptions\\": "./src/Exceptions",
+            "PHPClassMapper\\Exceptions\\Types\\": "./src/Exceptions/Types"
         }
     },
     "require-dev": {
