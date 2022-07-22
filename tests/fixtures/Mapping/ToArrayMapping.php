@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace PHPClassMapper\Tests\Fixtures\Mapping;
 
 use PHPClassMapper\Configuration\ToArrayMappingInterface;
-use PHPClassMapper\Tests\Fixtures\Battery;
 use PHPClassMapper\Tests\Fixtures\Device;
 
 final class ToArrayMapping implements ToArrayMappingInterface
