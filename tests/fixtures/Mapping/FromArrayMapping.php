@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPClassMapper\Tests\Fixtures\Mapping;
 
+use PHPClassMapper\ArrayMapperInterface;
 use PHPClassMapper\Configuration\FromArrayMappingInterface;
 use PHPClassMapper\Tests\Fixtures\Device;
 
@@ -17,7 +18,7 @@ final class FromArrayMapping implements FromArrayMappingInterface
      * @throws MissingMappingException when a mapping between two class types can't be found.
      * @throws MissingContextDataFieldException when a specific context data field can't be found.
      */
-    public function mapObject(array $source, array $contextData = []): object
+    public function mapObject(array $source, array $contextData = [], ArrayMapperInterface $mapper): object
     {
         return new Device($source['id'], $source['name']);
     }

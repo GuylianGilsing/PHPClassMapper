@@ -33,9 +33,9 @@ final class ArrayMapper implements ArrayMapperInterface
             throw new InvalidArgumentException("Destination class name '".$destinationClassName."' does not exist.");
         }
 
-        $mapper = $this->configuration->getFromArrayMapping($destinationClassName);
+        $mapping = $this->configuration->getFromArrayMapping($destinationClassName);
 
-        return $mapper->mapObject($source, $contextData);
+        return $mapping->mapObject($source, $contextData, $this);
     }
 
     /**
@@ -50,8 +50,8 @@ final class ArrayMapper implements ArrayMapperInterface
      */
     public function toArray(object $source, array $contextData = []): array
     {
-        $mapper = $this->configuration->getToArrayMapping($source::class);
+        $mapping = $this->configuration->getToArrayMapping($source::class);
 
-        return $mapper->mapObject($source, $contextData);
+        return $mapping->mapObject($source, $contextData, $this);
     }
 }

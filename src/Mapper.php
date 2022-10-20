@@ -37,8 +37,8 @@ final class Mapper implements MapperInterface
             throw new InvalidArgumentException("Destination class name '".$destinationClassName."' does not exist.");
         }
 
-        $mapper = $this->configuration->getMapping($source::class, $destinationClassName);
+        $mapping = $this->configuration->getMapping($source::class, $destinationClassName);
 
-        return $mapper->mapObject($source, $contextData);
+        return $mapping->mapObject($source, $contextData, $this);
     }
 }

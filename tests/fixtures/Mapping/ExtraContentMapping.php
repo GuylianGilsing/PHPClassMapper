@@ -7,6 +7,7 @@ namespace PHPClassMapper\Tests\Fixtures\ExtraContextMapping;
 use PHPClassMapper\Configuration\MappingInterface;
 use PHPClassMapper\Exceptions\MissingContextDataFieldException;
 use PHPClassMapper\Exceptions\MissingMappingException;
+use PHPClassMapper\MapperInterface;
 use PHPClassMapper\Tests\Fixtures\Battery;
 use PHPClassMapper\Tests\Fixtures\ChargeStatusDTO;
 use PHPClassMapper\Tests\Fixtures\Device;
@@ -24,7 +25,7 @@ final class ExtraContentMapping implements MappingInterface
      * @throws MissingMappingException when a mapping between two class types can't be found.
      * @throws MissingContextDataFieldException when a specific context data field can't be found.
      */
-    public function mapObject(object $source, array $contextData): object
+    public function mapObject(object $source, array $contextData, MapperInterface $mapper): object
     {
         if (!($source instanceof ChargeStatusDTO))
         {

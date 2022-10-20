@@ -6,6 +6,7 @@ namespace PHPClassMapper\Tests\Fixtures\Mapping;
 
 use PHPClassMapper\Configuration\MappingInterface;
 use PHPClassMapper\Exceptions\MissingMappingException;
+use PHPClassMapper\MapperInterface;
 use PHPClassMapper\Tests\Fixtures\Battery;
 use PHPClassMapper\Tests\Fixtures\ChargeStatusDTO;
 
@@ -22,7 +23,7 @@ final class AToBMapping implements MappingInterface
      * @throws MissingMappingException when a mapping between two class types can't be found.
      * @throws MissingContextDataFieldException when a specific context data field can't be found.
      */
-    public function mapObject(object $source, array $contextData): object
+    public function mapObject(object $source, array $contextData, MapperInterface $mapper): object
     {
         if (!($source instanceof Battery))
         {

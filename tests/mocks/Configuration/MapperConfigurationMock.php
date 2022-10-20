@@ -6,7 +6,6 @@ namespace PHPClassMapper\Tests\Mocks\Configurations;
 
 use PHPClassMapper\Configuration\MapperConfigurationInterface;
 use PHPClassMapper\Configuration\MappingInterface;
-use PHPClassMapper\Tests\Mocks\MappingConfigurations\SimpleMappingConfigurationMock;
 
 final class MapperConfigurationMock implements MapperConfigurationInterface
 {
