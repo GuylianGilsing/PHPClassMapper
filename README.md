@@ -60,6 +60,10 @@ $configuration->addMapping(Source::class, Destination::class, new MyMapping());
 To let the mapper know how to map your classes, you need to provide it with a mapping. A mapping can be created as follows:
 
 ```php
+use PHPClassMapper\Exceptions\MissingContextDataFieldException;
+use PHPClassMapper\Exceptions\MissingMappingException;
+use PHPClassMapper\MapperInterface;
+
 class MyMapping implements MappingInterface
 {
     /**
@@ -68,12 +72,13 @@ class MyMapping implements MappingInterface
      * @param object $source The class that needs to be mapped to a different class.
      * @param array<string, mixed> $contextData An associative array (key => value) that gives the mapper additional
      * data to work with.
+     * @param MapperInterface $mapper An extra mapper instance to map objects with.
      *
      * @throws InvalidArgumentException when a `MyClass::name` string refers to a class that does not exist.
      * @throws MissingMappingException when a mapping between two class types can't be found.
      * @throws MissingContextDataFieldException when a specific context data field can't be found.
      */
-    public function mapObject(object $source, array $contextData): object
+    public function mapObject(object $source, array $contextData, MapperInterface $mapper): object;
     {
         if (!($source instanceof Source))
         {
@@ -161,20 +166,26 @@ Since you can map arrays in two different ways, two different interfaces are bei
 
 **To array mapping**<br/>
 ```php
+use PHPClassMapper\ArrayMapperInterface;
 use PHPClassMapper\Configuration\ToArrayMappingInterface;
 
 final class ToArrayMapping implements ToArrayMappingInterface
 {
     /**
+     * Maps an object into an array.
+     *
      * @param object $source The class that needs to be mapped to an array.
      * @param array<string, mixed> $contextData An associative array (key => value) that gives the mapper additional
      * data to work with.
+     * @param ArrayMapperInterface $mapper An extra mapper instance to map objects with.
      *
      * @throws InvalidArgumentException when a `MyClass::name` string refers to a class that does not exist.
      * @throws MissingMappingException when a mapping between two class types can't be found.
      * @throws MissingContextDataFieldException when a specific context data field can't be found.
+     *
+     * @return array<mixed>
      */
-    public function mapObject(object $source, array $contextData = []): array
+    public function mapObject(object $source, array $contextData, ArrayMapperInterface $mapper): array;
     {
         return [];
     }
@@ -183,19 +194,24 @@ final class ToArrayMapping implements ToArrayMappingInterface
 
 **From array mapping**<br/>
 ```php
+use PHPClassMapper\ArrayMapperInterface;
 use PHPClassMapper\Configuration\FromArrayMappingInterface;
 
 final class FromArrayMapping implements FromArrayMappingInterface
 {
     /**
+     * Maps an array into an object.
+     *
      * @param array<string, mixed> $source The class that needs to be mapped to a different class.
      * @param array<string, mixed> $contextData An associative array (key => value) that gives the mapper additional
      * data to work with.
+     * @param ArrayMapperInterface $mapper An extra mapper instance to map nested arrays with.
      *
+     * @throws InvalidArgumentException when a `MyClass::name` string refers to a class that does not exist.
      * @throws MissingMappingException when a mapping between two class types can't be found.
      * @throws MissingContextDataFieldException when a specific context data field can't be found.
      */
-    public function mapObject(array $source, array $contextData = []): object
+    public function mapObject(array $source, array $contextData, ArrayMapperInterface $mapper): object;
     {
         return new Destination();
     }
