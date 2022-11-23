@@ -17,6 +17,9 @@
             "PHPClassMapper\\Exceptions\\Types\\": "./src/Exceptions/Types"
         }
     },
+    "require": {
+        "php": ">=8.0"
+    },
     "require-dev": {
         "nunomaduro/phpinsights": "^2.2",
         "phpunit/phpunit": "9.5"
